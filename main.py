@@ -13,7 +13,7 @@ from ptbcontrib.postgres_persistence import PostgresPersistence
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 DEFAULT_TZINFO = pytz.FixedOffset(5 * 60 + 30)
-freepik_client = Freepik(os.environ['FREEPIK_USERNAME'], os.environ['FREEPIK_PASSWORD'], os.environ['2CAPTCHA_API_KEY'])
+freepik_client = Freepik(os.environ['thfmbro@gmail.com'], os.environ['thfmbro@#456456'], os.environ['4fa4ed3c74edb99a9602e9c6e7774ed2'])
 
 
 class InvalidURLError(Exception):
@@ -31,7 +31,7 @@ def set_role_handler(update: Update, ctx: CallbackContext):
     # print('bot_data =', ctx.bot_data)
     print(update.message.text)
     if len(ctx.args) < 2:
-        return update.message.reply_text('You have to specify the role and the username(s) like this: /set_role role_name username\n'
+        return update.message.reply_text('/set_role admin @tematoo\n'
                                          'You can see all roles with /roles_list')
     role = ctx.args[0]
     usernames = [username if not username.startswith('@') else username[1:] for username in ctx.args[1:]]
@@ -176,7 +176,7 @@ def main():
             freepik_client.session = pickle.load(file)
     defaults = Defaults(tzinfo=DEFAULT_TZINFO)
     persistence = PostgresPersistence(os.environ['DATABASE_URL'].replace('postgres://', 'postgresql://'))  # PicklePersistence('persistence.pickle')
-    updater = Updater(token=os.environ['TELEGRAM_TOKEN'], use_context=True, persistence=persistence, defaults=defaults)
+    updater = Updater(token=os.environ['7338492149:AAH2ukJ-VWBqhNELMb_xqjRBeI8_jz-gQX8'], use_context=True, persistence=persistence, defaults=defaults)
     dispatcher: Dispatcher = updater.dispatcher
     dispatcher.bot_data.setdefault('users', dict())
 
